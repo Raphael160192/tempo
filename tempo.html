@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronômetro Regressivo</title>
+    <!-- Link to Bootstrap for styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .countdown-container {
+            text-align: center;
+            background-color: #343a40;
+            padding: 40px;
+            border-radius: 8px;
+            color: white;
+        }
+        .countdown-container h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .time {
+            font-size: 2em;
+	    margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="countdown-container">
+    <h1>Cronômetro Regressivo</h1>
+    <div id="countdown" class="time">Carregando...</div>
+    <h2>"Se você quiser alguém pra ser só seu, é só não se esquecer: estarei aqui!" 😍</h2>
+</div>
+
+<!-- JavaScript to handle countdown logic -->
+<script>
+    function countdown() {
+        // Data alvo: 19/10/2024 12:00
+        const targetDate = new Date('2024-10-19T12:00:00');
+        const now = new Date();
+
+        const totalSeconds = (targetDate - now) / 1000;
+
+        if (totalSeconds <= 0) {
+            document.getElementById("countdown").innerHTML = "O evento já ocorreu!";
+            return;
+        }
+
+        const days = Math.floor(totalSeconds / (60 * 60 * 24));
+        const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+        const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+        const seconds = Math.floor(totalSeconds % 60);
+
+        document.getElementById("countdown").innerHTML =
+            `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Atualiza o cronômetro a cada segundo
+    setInterval(countdown, 1000);
+</script>
+
+</body>
+</html>
